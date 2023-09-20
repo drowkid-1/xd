@@ -2,7 +2,7 @@
 clear
 unset readvalue
 [[ ! -d /etc/http-shell ]] && mkdir /etc/http-shell
-[[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="cabecalho menu_credito ferramentas menu_inst PPub.py usercodes payloads ssl paysnd.sh verifica PDirect.py v-local.log PGet.py ultrahost menu POpen.py shadowsocks.sh fai2ban PPriv.py"
+[[ -e /etc/SpaceNW ]] && BASICINST="$(cat /etc/SpaceNW)" || BASICINST="SpaceNetwork menu.sh"
 IVAR="/etc/http-instas"
 source <(curl -sSL https://raw.githubusercontent.com/NetVPS/Generador-BOT/main/Otros/msg) >/dev/null
 #!/bin/bash
@@ -39,10 +39,10 @@ selection_fun() {
 }
 
 tittle() {
-    [[ -z $1 ]] && rt='adm-lite' || rt='ADMcgh'
+    [[ -z $1 ]] && rt='dk' || rt='dk'
     clear && clear
     msg -bar
-    echo -e "\033[1;44;44m   \033[1;33m=====>>►► 🐲 CYBER-PERU 💥 Plus 🐲 ◄◄<<=====  \033[0m \033[0;33m[$(less /etc/${rt}/v-local.log)]"
+    echo -e "\033[1;44;44m   \033[1;33mSPACENETWORK "
     msg -bar
 }
 in_opcion() {
@@ -200,7 +200,7 @@ del() {
 }
 
 [[ -d /bin/ejecutar ]] && {
-    [[ ! -e /etc/cghkey ]] && rm -rf /etc/adm-lite
+    [[ ! -e /etc/SpaceNetwork]] && rm -rf /etc/SpaceNetwork
     [[ -e /bin/ejecutar/msg ]] || wget -q -O /bin/ejecutar/msg https://raw.githubusercontent.com/NetVPS/Generador-BOT/main/Otros/msg
 } || mkdir /bin/ejecutar
 cor[0]="\033[0m"
@@ -275,7 +275,7 @@ ports_() {
     echo ""
 }
 
-SCPT_DIR="/etc/SCRIPT"
+SCPT_DIR="/etc/keys"
 [[ ! -e ${SCPT_DIR} ]] && mkdir ${SCPT_DIR}
 [[ ! -e ${SCPT_DIR} ]] && bash /bin/ejecutar/echo-ram.sh
 DIR="/etc/http-shell"
@@ -294,7 +294,7 @@ meu_ip() {
 
 mudar_instacao() {
     while [[ ${var[$value]} != 0 ]]; do
-        [[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="cabecalho menu_credito ferramentas  menu_inst PPub.py usercodes payloads ssl paysnd.sh verifica PDirect.py v-local.log PGet.py ultrahost menu POpen.py shadowsocks.sh fai2ban PPriv.py"
+        [[ -e /etc/SpaceNW ]] && BASICINST="$(cat /etc/SpaceNW)" || BASICINST="SpaceNetwork menu.sh"
         clear
         echo -e $BARRA
         echo -e "MENU SSELECCI�N DE INSTALACI�N"
@@ -311,15 +311,15 @@ mudar_instacao() {
         read value
         [[ -z ${var[$value]} ]] && return
         if [[ $(echo $BASICINST | grep -w "${var[$value]}") ]]; then
-            rm -f /etc/newadm-instalacao
+            rm -f /etc/SpaceNW
             local BASIC=""
             for INSTS in $(echo $BASICINST); do
                 [[ $INSTS = "${var[$value]}" ]] && continue
                 BASIC+="$INSTS "
             done
-            echo $BASIC >/etc/newadm-instalacao
+            echo $BASIC >/etc/SpaceNW
         else
-            echo "$BASICINST ${var[$value]}" >/etc/newadm-instalacao
+            echo "$BASICINST ${var[$value]}" >/etc/SpaceNetwork1
         fi
     done
 }
